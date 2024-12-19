@@ -1,4 +1,5 @@
 {
+  "TTS": {
     "tts-1-hd": {
       "mlx-base-female-speaker": {
         "model": "lucasnewman/f5-tts-mlx",
@@ -52,4 +53,23 @@
 
     "tts-1": {
     }
+  },
+
+  "STT": {
+    "whisper-tiny": {
+      "model": "tiny",
+      "architecture": "whisper-mlx"
+    },
+
+    "whisper-base": {
+      "model": "base",
+      "architecture": "whisper-mlx"
+    },
+
+    "whisper-large-v3": {
+      "model": "large-v3",
+      "architecture": "whisper-mlx",
+      "quantization_bits": "8bit"
+    }
   }
+}
