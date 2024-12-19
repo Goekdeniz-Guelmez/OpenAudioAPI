@@ -124,3 +124,7 @@ class CustomLightningWhisperMLX:
             batch_size=self.batch_size,
             **kwargs
         )
+
+def generate_api_key():
+    import secrets
+    return secrets.token_urlsafe(32)

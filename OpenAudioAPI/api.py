@@ -12,7 +12,7 @@ from TTS.api import TTS
 from f5_tts_mlx.generate import generate, SAMPLE_RATE
 from langdetect import detect
 from typing import Optional, Literal, Union, List, Tuple
-from handlers import CustomLightningWhisperMLX
+from handlers import CustomLightningWhisperMLX, generate_api_key
 
 app = FastAPI(title="OpenAudioAPI")
 
@@ -475,7 +475,16 @@ async def health_check():
 @app.get("/v1/available_voices")
 async def list_voices():
     config = load_config()
-    return config
+    return config["TTS"]
+
+@app.get("/v1/available_stt_models")
+async def list_stt_models():
+    config = load_config()
+    return config["STT"]
+
+@app.get("/v1/generate_new_api_key")
+async def generate_new_api_key():
+    return generate_api_key()
 
 @app.post("/v1/audio/transcriptions")
 async def create_transcription(

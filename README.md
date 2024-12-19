@@ -286,10 +286,6 @@ The API returns appropriate HTTP status codes and error messages:
 
 Contributions are welcome! Please feel free to submit pull requests.
 
-## License
-
-[Your chosen license]
-
 ## Acknowledgments
 
 - [f5-tts-mlx by Lucas Newman](https://github.com/lucasnewman/f5-tts-mlx.git)
