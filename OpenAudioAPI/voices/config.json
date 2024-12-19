@@ -5,14 +5,14 @@
         "model": "lucasnewman/f5-tts-mlx",
         "architecture": "f5-mlx",
         "ref_audio_text": "Some call me nature, others call me mother nature.",
-        "ref_audio_path": "voices/ref_audios/test_en_2_ref_short.wav"
+        "ref_audio_path": "voices/ref_audios/base_female.wav"
       },
 
       "mlx-base-female-speaker-max-customized": {
         "model": "lucasnewman/f5-tts-mlx",
         "architecture": "f5-mlx",
         "ref_audio_text": "Some call me nature, others call me mother nature.",
-        "ref_audio_path": "voices/ref_audios/test_en_2_ref_short.wav",
+        "ref_audio_path": "voices/ref_audios/base_female.wav",
         "steps": 12,
         "cfg_strength": 2.0,
         "sway_sampling_coef": -1.0,
@@ -28,15 +28,15 @@
         "architecture": "f5-mlx"
       },
 
-      "JOSIE": {
-        "ref_audio_path": "voices/ref_audios/SJ.wav",
+      "base-female-speaker": {
+        "ref_audio_path": "voices/ref_audios/base_female.wav",
         "model": "tts_models/multilingual/multi-dataset/xtts_v2",
         "architecture": "xtts",
-        "language": "en"
+        "language": "auto"
       },
 
-      "Haylee-Steinfeld": {
-        "ref_audio_path": "voices/ref_audios/HS.wav",
+      "base-female-speaker-max-customized": {
+        "ref_audio_path": "voices/ref_audios/base_female.wav",
         "model": "tts_models/multilingual/multi-dataset/xtts_v2",
         "architecture": "xtts",
         "language": "auto",
@@ -68,8 +68,26 @@
 
     "whisper-large-v3": {
       "model": "large-v3",
+      "architecture": "whisper-mlx"
+    },
+
+    "whisper-large-v3-max-customized": {
+      "model": "large-v3",
       "architecture": "whisper-mlx",
-      "quantization_bits": "8bit"
+      "quantization_bits": "8bit",
+      "temperature": 0.7,
+      "compression_ratio_threshold": 2.5,
+      "logprob_threshold": -1,
+      "no_speech_threshold": 0.6,
+      "condition_on_previous_text": false,
+      "initial_prompt": "The quick brown fox jumps over the lazy dog.",
+      "word_timestamps": true,
+      "prepend_punctuations": "'¿([{-#",
+      "append_punctuations": "'¿.,:;!?])}-",
+      "clip_timestamps": true,
+      "hallucination_silence_threshold": 0.5,
+      "language": "en",
+      "batch_size": 6
     }
   }
 }

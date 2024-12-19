@@ -1,0 +1,10 @@
+lightning-whisper-mlx
+f5_tts_mlx
+
+fastapi
+pydantic
+TTS
+langdetect
+torch
+setuptools
+huggingface_hub

@@ -1,6 +1,6 @@
 # OpenAudioAPI
 
-A versatile Text-to-Speech and Speech-To-Text API that supports multiple TTS architectures including F5-TTS-MLX, XTTS, and Piper. This API provides high-quality speech synthesis with various voice customization options and audio enhancements.
+A versatile Speech API that supports both Text-to-Speech (TTS) and Speech-to-Text (STT) capabilities. The API integrates multiple TTS architectures including F5-TTS-MLX, XTTS, and Piper for speech synthesis, as well as lightning-whisper-mlx for speech recognition. This comprehensive solution provides high-quality speech processing with various customization options and enhancements.
 
 ## Features
 
@@ -8,6 +8,10 @@ A versatile Text-to-Speech and Speech-To-Text API that supports multiple TTS arc
   - F5-TTS-MLX for high-quality neural TTS
   - XTTS for multilingual support
   - Piper for fast and efficient TTS
+- 🎤 Speech-to-Text Support:
+  - Lightning Whisper MLX for fast and accurate transcription
+  - Multiple model sizes from tiny to large-v3
+  - Optional quantization for improved performance
 - 🔊 Voice Cloning Capabilities
 - 🌐 Multi-language Support
 - 🎨 Customizable Voice Settings
@@ -16,7 +20,7 @@ A versatile Text-to-Speech and Speech-To-Text API that supports multiple TTS arc
 
 ## Prerequisites
 
-- Python 3.8+
+- Python 3.9+
 - FFmpeg installed on your system
 - CUDA-capable GPU (optional, for improved performance)
 - Required Python packages (see `requirements.txt`)
@@ -24,26 +28,53 @@ A versatile Text-to-Speech and Speech-To-Text API that supports multiple TTS arc
 ## Installation
 
 1. Clone the repository:
+
 ```bash
-git clone <your-repository-url>
-cd <repository-name>
+git clone https://github.com/Goekdeniz-Guelmez/OpenAudioAPI.git
+cd OpenAudioAPI
 ```
 
-2. Install the required dependencies:
+2: Install the required dependencies:
+
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Install FFmpeg (if not already installed):
+3: Install FFmpeg (if not already installed):
+
 - On macOS: `brew install ffmpeg`
 - On Ubuntu: `sudo apt-get install ffmpeg`
 - On Windows: Download from [FFmpeg website](https://ffmpeg.org/download.html)
 
 ## Configuration
 
-The API uses a `config.json` file to manage voice settings and model configurations. Here's a detailed guide on configuring different TTS architectures:
+The API uses a `config.json` file to manage both TTS and STT settings. The configuration is divided into two main sections: "TTS" for Text-to-Speech and "STT" for Speech-to-Text. Here's a detailed guide on configuring different architectures:
 
-### Common Settings (All Architectures)
+### Configuration Structure
+
+The configuration file is structured as follows:
+
+```json
+{
+  "TTS": {
+    "tts-1-hd": {
+      "voice_name": {
+        // TTS voice configurations
+      }
+    },
+    "tts-1": {
+      // Additional TTS configurations
+    }
+  },
+  "STT": {
+    "model_name": {
+      // STT model configurations
+    }
+  }
+}
+```
+
+### Common Settings (TTS Architectures)
 
 These settings can be applied to any voice configuration:
 
@@ -123,7 +154,41 @@ Piper provides fast and efficient TTS with good quality output.
 }
 ```
 
-## API Endpoints
+### Whisper MLX Configuration
+
+Lightning Whisper MLX provides fast and accurate speech recognition with various model sizes and quantization options.
+
+Available Models:
+
+- tiny
+- small
+- distil-small.en
+- base
+- medium
+- distil-medium.en
+- large
+- large-v2
+- distil-large-v2
+- large-v3
+- distil-large-v3
+
+Quantization Options:
+
+- None (default)
+- "4bit"
+- "8bit"
+
+```json
+{
+  "STT": {
+    "whisper-tiny": {
+      "architecture": "whisper-mlx",
+      "model": "tiny"
+    },
+    "whisper-large-v3": {
+      "architecture": "whisper-mlx",
+      "model": "large-v3",
+      
 
 ### Generate Speech
 ```http
@@ -131,6 +196,7 @@ POST /v1/audio/speech
 ```
 
 Request body parameters:
+
 ```json
 {
   "model": "tts-1-hd",           // Model type
@@ -142,6 +208,7 @@ Request body parameters:
 ```
 
 ### List Available Voices
+
 ```http
 GET /v1/available_voices
 ```
@@ -149,6 +216,7 @@ GET /v1/available_voices
 Returns the complete configuration with available voices and their settings.
 
 ### Health Check
+
 ```http
 GET /health
 ```
@@ -168,6 +236,7 @@ When using the `tts-1-hd` model with `enhance_quality: true`, the following enha
 ## Examples
 
 ### Basic Usage
+
 ```python
 import requests
 
@@ -186,6 +255,7 @@ with open("output.wav", "wb") as f:
 ```
 
 ### Voice Cloning Example
+
 ```python
 import requests
 
@@ -222,12 +292,26 @@ Contributions are welcome! Please feel free to submit pull requests.
 
 ## Acknowledgments
 
-- F5-TTS-MLX
-- XTTS
-- Piper TTS
+- [f5-tts-mlx by Lucas Newman](https://github.com/lucasnewman/f5-tts-mlx.git)
+- [TTS by Coqui](https://github.com/coqui-ai/TTS.git)
+- [TTS by Rhasspy](https://github.com/rhasspy/piper.git)
+- [lightning-whisper-mlx by Mustafa Aljadery](https://github.com/mustafaaljadery/lightning-whisper-mlx.git)
 - FastAPI
 - FFmpeg
 
-## Support
+## Citing OpenAudioAPI
 
-For support, please [create an issue](your-issue-tracker-url) or contact [your-contact-info].
+The OpenAudioAPI software suite was developed by Gökdeniz Gülmez. If you find
+OpenAudioAPI useful in your research and wish to cite it, please use the following
+BibTex entry:
+
+```text
+@software{
+  OpenAudioAPI,
+  author = {Gökdeniz Gülmez},
+  title = {{OpenAudioAPI}: A versatile Speech API that supports both Text-to-Speech (TTS) and Speech-to-Text (STT) capabilities.},
+  url = {https://github.com/Goekdeniz-Guelmez/OpenAudioAPI.git},
+  version = {0.0.1},
+  year = {2024},
+}
+```

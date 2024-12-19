@@ -1,0 +1,7 @@
+__pycache__/
+.cache/
+*.pyc
+./voices/models/mlx/*
+
+tetsstt.py
+tt.py
