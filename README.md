@@ -318,6 +318,7 @@ Contributions are welcome! Please feel free to submit pull requests.
 - [ ] Supporting CUDA and Pytorch Whisper.
 - [ ] Supporting Bark models.
 - [ ] Supprting Piper TTS for 'tts-1'.
+- [ ] Adding 'keep_alive' parameter to keep models loaded in RAM.
 
 ## Citing OpenAudioAPI
 
