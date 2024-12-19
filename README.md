@@ -274,6 +274,23 @@ with open("cloned_voice.mp3", "wb") as f:
     f.write(response.content)
 ```
 
+### Whisper MLX
+
+```python
+import requests
+
+files = {
+  'file': open('/Users/gokdenizgulmez/Desktop/OpenAudioAPI/SJ.wav', 'rb')
+}
+
+data = {
+  'model': 'whisper-tiny'
+}
+response = requests.post(url, files=files, data=data)
+
+print(f"Response: {response.json()}")
+```
+
 ## Error Handling
 
 The API returns appropriate HTTP status codes and error messages:
@@ -294,6 +311,13 @@ Contributions are welcome! Please feel free to submit pull requests.
 - [lightning-whisper-mlx by Mustafa Aljadery](https://github.com/mustafaaljadery/lightning-whisper-mlx.git)
 - FastAPI
 - FFmpeg
+
+## Future PLans
+
+- [ ] API endpoint to clone a voice via request.
+- [ ] Supporting CUDA and Pytorch Whisper.
+- [ ] Supporting Bark models.
+- [ ] Supprting Piper TTS for 'tts-1'.
 
 ## Citing OpenAudioAPI
 
