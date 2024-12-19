@@ -1,31 +1,28 @@
 {
     "tts-1-hd": {
-      "MLX-JOSIE": {
-        "ref_audio_path": "voices/ref_audios/SJ_24k.wav",
-        "model": "lucasnewman/f5-tts-mlx",
-        "architecture": "f5-mlx",
-        "ref_audio_text": "I am Josie, a voice model created.",
-        "original_ref_audio_path": "voices/ref_audios/SJ.wav"
-      },
-
-      "female-speaker": {
+      "mlx-base-female-speaker": {
         "model": "lucasnewman/f5-tts-mlx",
         "architecture": "f5-mlx",
         "ref_audio_text": "Some call me nature, others call me mother nature.",
         "ref_audio_path": "voices/ref_audios/test_en_2_ref_short.wav"
       },
 
-      "MLX-Haylee-Steinfeld": {
-        "ref_audio_path": "voices/ref_audios/HS.wav",
+      "mlx-base-female-speaker-max-customized": {
         "model": "lucasnewman/f5-tts-mlx",
         "architecture": "f5-mlx",
-        "ref_aufio_text": "Well, I am Haylee Steinfeld, a voice model created.",
-        "steps": 8,
+        "ref_audio_text": "Some call me nature, others call me mother nature.",
+        "ref_audio_path": "voices/ref_audios/test_en_2_ref_short.wav",
+        "steps": 12,
+        "cfg_strength": 2.0,
+        "sway_sampling_coef": -1.0,
         "speed": 0.8,
+        "method": "euler",
+        "duration": 7.3,
+        "seed": 92834756,
         "quantization_bits": 4
       },
 
-      "MLX-base": {
+      "mlx-base": {
         "model": "lucasnewman/f5-tts-mlx",
         "architecture": "f5-mlx"
       },
