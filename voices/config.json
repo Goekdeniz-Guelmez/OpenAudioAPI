@@ -1,0 +1,58 @@
+{
+    "tts-1-hd": {
+      "MLX-JOSIE": {
+        "ref_audio_path": "voices/ref_audios/SJ_24k.wav",
+        "model": "lucasnewman/f5-tts-mlx",
+        "architecture": "f5-mlx",
+        "ref_audio_text": "I am Josie, a voice model created.",
+        "original_ref_audio_path": "voices/ref_audios/SJ.wav"
+      },
+
+      "female-speaker": {
+        "model": "lucasnewman/f5-tts-mlx",
+        "architecture": "f5-mlx",
+        "ref_audio_text": "Some call me nature, others call me mother nature.",
+        "ref_audio_path": "voices/ref_audios/test_en_2_ref_short.wav"
+      },
+
+      "MLX-Haylee-Steinfeld": {
+        "ref_audio_path": "voices/ref_audios/HS.wav",
+        "model": "lucasnewman/f5-tts-mlx",
+        "architecture": "f5-mlx",
+        "ref_aufio_text": "Well, I am Haylee Steinfeld, a voice model created.",
+        "steps": 8,
+        "speed": 0.8,
+        "quantization_bits": 4
+      },
+
+      "MLX-base": {
+        "model": "lucasnewman/f5-tts-mlx",
+        "architecture": "f5-mlx"
+      },
+
+      "JOSIE": {
+        "ref_audio_path": "voices/ref_audios/SJ.wav",
+        "model": "tts_models/multilingual/multi-dataset/xtts_v2",
+        "architecture": "xtts",
+        "language": "en"
+      },
+
+      "Haylee-Steinfeld": {
+        "ref_audio_path": "voices/ref_audios/HS.wav",
+        "model": "tts_models/multilingual/multi-dataset/xtts_v2",
+        "architecture": "xtts",
+        "language": "auto",
+        "emotion": "loving",
+        "speed": 0.8,
+        "split_sentences": true,
+        "enhance_quality": true,
+        "sample_rate": 48000,
+        "normalization_level": -3.0,
+        "high_pass_filter": true,
+        "noise_reduction": true
+      }
+    },
+
+    "tts-1": {
+    }
+  }
